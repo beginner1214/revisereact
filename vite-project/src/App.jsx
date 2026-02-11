@@ -1,37 +1,32 @@
-import { useState } from 'react'
-
-import './App.css'
+import { useState } from "react";
+import Profile from "./componenets/profile";
+import "./App.css";
 
 function App() {
-  const [car, setCar] = useState({
-    color:"blue"
-  })
-  const [count, setCount] = useState(0)
-  const [number,setnumber]=useState();
+  const [count, setCount] = useState(0);
+  const [name, setName] = useState("Sam");
+  const [email, setEmail] = useState("sam@example.com");
 
-  const cube=()=>{
-    console.log("the Calculation is Done");
-    return Math.pow(number,3);
-    
-  }
-  
+  const handleRename = () => {
+    setName("Alex");
+  };
+
+  const handleIncrement = () => {
+    setCount((prev) => prev + 1);
+  };
+
   return (
     <>
-     <h2>hello My car is {car.color} </h2>
-     {/* <button onClick={() => setCar((prev) => ({ ...prev, color: "red" }))}>
-       Submit
-     </button> */}
-
-
-     {/* <button onClick={() => setCount((prev) => prev + 1)}>+1</button>
-     <h1> value {count}</h1>
-     <button onClick={() => setCount((prev) => prev - 1)}>-1</button> */}
-    <input type="number" value={number} onChange={(e)=>setnumber(e.target.value)}/>
-    <h2>The cube of Number is :{cube(number)}</h2>{}
-
-
+      <h2>App</h2>
+      <Profile
+        name={name}
+        email={email}
+        count={count}
+        onRename={handleRename}
+        onIncrement={handleIncrement}
+      />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
