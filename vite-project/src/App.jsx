@@ -1,30 +1,29 @@
-import { useEffect, useRef, useState } from "react";
-import "./App.css";
+import { useState, useEffect } from "react";
+import Header from "./Components/Header";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [isdark, setdark] = useState(
+    JSON.parse(localStorage.getItem("isdarks")) || false
+  );
 
-  const [renderCount, setRenderCount] = useState(1);
-  const isFirstRender = useRef(true);
-  const value = useRef(1);
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
+    if (isdark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
     }
 
-    value.current = value.current + 1;
-    setRenderCount(value.current);
-  }, [count]);
-  return (
-    <>
-      <h2>App</h2>
-      <button onClick={() => setCount((prev) => prev + 1)}>+1</button>
-      {count}
+    localStorage.setItem("isdarks", JSON.stringify(isdark));
+  }, [isdark]);
 
-      <button onClick={() => setCount((prev) => prev - 1)}>-1</button>
-      <div>Renders: {renderCount}</div>
-    </>
+  return (
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+      <Header isdark={isdark} setdark={setdark} />
+
+      <div className="p-10 text-gray-800 dark:text-gray-200">
+        Dark mode enabled with Tailwind 🌙
+      </div>
+    </div>
   );
 }
 
