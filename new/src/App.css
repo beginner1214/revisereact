@@ -1,0 +1,50 @@
+/* style.css */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #1e1e2f;
+  color: white;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  color: #00adb5;
+}
+
+/* Cart styling */
+.cart {
+  position: relative;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  padding: 3px 7px;
+  border-radius: 50%;
+  font-weight: bold;
+}
